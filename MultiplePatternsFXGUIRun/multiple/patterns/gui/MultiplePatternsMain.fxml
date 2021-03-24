@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.191" xmlns:fx="http://javafx.com/fxml/1" fx:controller="multiple.patterns.gui.MultiplePatternsGUI">
+   <children>
+      <HBox>
+         <children>
+            <VBox>
+               <children>
+                  <Button id="addCircleButton" fx:id="addCircleButton" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#initCreateCircle" prefHeight="80.0" prefWidth="200.0" text="Add Circle">
+                     <graphic>
+                        <FontAwesomeIconView fx:id="circleIcon" glyphName="CIRCLE_THIN" size="30" />
+                     </graphic>
+                     <font>
+                        <Font name="Avenir Next Medium" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="addSquareButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#initCreateSquare" prefHeight="80.0" prefWidth="200.0" text="Add Square">
+                     <graphic>
+                        <FontAwesomeIconView fx:id="squareIcon" glyphName="SQUARE_ALT" size="30" />
+                     </graphic>
+                     <font>
+                        <Font name="Avenir Next Medium" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="cloneButton" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#initClone" prefHeight="80.0" prefWidth="200.0" text="Clone">
+                     <graphic>
+                        <FontAwesomeIconView fx:id="cloneIcon" glyphName="CLONE" size="30" />
+                     </graphic>
+                     <font>
+                        <Font name="Avenir Next Medium" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="moveButton" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#initMove" prefHeight="80.0" prefWidth="200.0" text="Move">
+                     <graphic>
+                        <FontAwesomeIconView fx:id="moveIcon" glyphName="ARROWS" size="30" />
+                     </graphic>
+                     <font>
+                        <Font name="Avenir Next Medium" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="scaleButton" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#initScale" prefHeight="80.0" prefWidth="200.0" text="Scale">
+                     <graphic>
+                        <FontAwesomeIconView fx:id="scaleIcon" glyphName="EXPAND" size="30" />
+                     </graphic>
+                     <font>
+                        <Font name="Avenir Next Medium" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="colorButton" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="290.0" mnemonicParsing="false" onMouseClicked="#initPaint" prefHeight="80.0" prefWidth="200.0" text="Change Color">
+                     <graphic>
+                        <FontAwesomeIconView fx:id="colorIcon" glyphName="PAINT_BRUSH" size="30" />
+                     </graphic>
+                     <font>
+                        <Font name="Avenir Next Medium" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="deleteButton" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" onMouseClicked="#deleteShape" prefHeight="80.0" prefWidth="200.0" text="Delete">
+                     <graphic>
+                        <FontAwesomeIconView fx:id="deleteIcon" glyphName="REMOVE" size="30" />
+                     </graphic>
+                     <font>
+                        <Font name="Avenir Next Medium" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="undoButton" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="545.0" mnemonicParsing="false" onMouseClicked="#undo" prefHeight="80.0" prefWidth="200.0" text="Undo">
+                     <graphic>
+                        <FontAwesomeIconView fx:id="undoIcon" glyphName="UNDO" size="30" />
+                     </graphic>
+                     <font>
+                        <Font name="Avenir Next Medium" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="redoButton" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="608.0" mnemonicParsing="false" onMouseClicked="#redo" prefHeight="80.0" prefWidth="200.0" text="Redo">
+                     <graphic>
+                        <FontAwesomeIconView fx:id="redoIcon" glyphName="REPEAT" size="30" />
+                     </graphic>
+                     <font>
+                        <Font name="Avenir Next Medium" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <HBox>
+                     <children>
+                        <TabPane fx:id="TabPlane" prefHeight="470.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="Infinity" tabMaxWidth="Infinity" HBox.hgrow="ALWAYS">
+                          <tabs>
+                            <Tab fx:id="tabVisual" text="Visual">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0">
+                                       <children>
+                                          <Group fx:id="canvas" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                            <Tab fx:id="tabTextual" text="Textual">
+                                 <content>
+                                    <TableView fx:id="shapesTable" onMouseClicked="#selectFromTable" prefHeight="453.0" prefWidth="800.0">
+                                      <columns>
+                                        <TableColumn fx:id="idShape" editable="false" prefWidth="93.0" text="Id" />
+                                        <TableColumn fx:id="shapeType" editable="false" prefWidth="93.0" text="Type" />
+                                          <TableColumn editable="false" prefWidth="93.0" text="X" fx:id="x" />
+                                          <TableColumn fx:id="y" editable="false" prefWidth="93.0" text="Y" />
+                                          <TableColumn fx:id="dimension" editable="false" prefWidth="93.0" text="Dimension" />
+                                          <TableColumn fx:id="color" editable="false" prefWidth="93.0" text="Color" />
+                                          <TableColumn fx:id="isClone" editable="false" prefWidth="93.0" text="is Clone" />
+                                      </columns>
+                                    </TableView>
+                                 </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
+                     </children>
+                  </HBox>
+                  <GridPane maxHeight="250.0" maxWidth="800.0" prefHeight="250.0" prefWidth="800.0" style="-fx-background-color: lightgrey;">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="Infinity" minWidth="10.0" />
+                      <ColumnConstraints hgrow="ALWAYS" maxWidth="Infinity" minWidth="10.0" />
+                      <ColumnConstraints hgrow="ALWAYS" maxWidth="Infinity" minWidth="10.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints vgrow="ALWAYS" />
+                        <RowConstraints vgrow="ALWAYS" />
+                      <RowConstraints vgrow="ALWAYS" />
+                      <RowConstraints vgrow="ALWAYS" />
+                        <RowConstraints vgrow="ALWAYS" />
+                      <RowConstraints vgrow="ALWAYS" />
+                    </rowConstraints>
+                     <children>
+                        <TextField disable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="xInput">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <Label alignment="CENTER_RIGHT" text="X :" textAlignment="RIGHT" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Avenir Next Condensed Medium" size="13.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" text="Y :" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="Avenir Next Condensed Medium" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="yInput" disable="true" layoutX="183.0" layoutY="42.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="10.0" right="150.0" top="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="41.0" text="Dimension :" textAlignment="RIGHT" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Avenir Next Condensed Medium" size="13.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <TextField fx:id="dimensionInput" disable="true" layoutX="183.0" layoutY="42.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <Label alignment="CENTER_RIGHT" layoutX="336.0" layoutY="41.0" text="Color :" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Avenir Next Condensed Medium" size="13.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="71.0" text="Relative X :" textAlignment="RIGHT" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Avenir Next Condensed Medium" size="13.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="101.0" text="Relative Y :" textAlignment="RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Avenir Next Condensed Medium" size="13.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <TextField fx:id="relativeXInput" disable="true" layoutX="183.0" layoutY="72.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="relativeYInput" disable="true" layoutX="173.0" layoutY="102.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="10.0" right="150.0" top="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <GridPane GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                          </rowConstraints>
+                           <children>
+                              <Button fx:id="circleValidateButton" mnemonicParsing="false" onMouseClicked="#validateCircleCreationForm" text="Create Circle" visible="false" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Avenir Next Condensed Medium" size="13.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIconView fx:id="circleValidateIcon" glyphName="CIRCLE_THIN" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="cancelButton" cancelButton="true" mnemonicParsing="false" onMouseClicked="#cancel" text="Cancel" visible="false" GridPane.halignment="RIGHT">
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" right="20.0" top="10.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Avenir Next Condensed Medium" size="13.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIconView fx:id="cancelIcon" glyphName="BAN" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="squareValidateButton" layoutX="178.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#validateSquareCreationForm" text="Create Square" visible="false" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font name="Avenir Next Condensed Medium" size="13.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIconView fx:id="squareValidateIcon" glyphName="SQUARE_ALT" />
+                                 </graphic>
+                                 <GridPane.margin>
+                                    <Insets left="20.0" />
+                                 </GridPane.margin>
+                              </Button>
+                              <Button fx:id="cloneValidateButton" layoutX="178.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#validateCloneForm" text="Clone" visible="false" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font name="Avenir Next Condensed Medium" size="13.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIconView fx:id="cloneValidateIcon" glyphName="CLONE" />
+                                 </graphic>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <GridPane.margin>
+                                    <Insets left="20.0" />
+                                 </GridPane.margin>
+                              </Button>
+                              <Button fx:id="paintValidateButton" layoutX="178.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#validatePaintForm" text="Paint" visible="false" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font name="Avenir Next Condensed Medium" size="13.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIconView fx:id="paintValidateIcon" glyphName="PAINT_BRUSH" />
+                                 </graphic>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </Button>
+                              <Button fx:id="moveValidateButton" layoutX="178.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#validateMoveForm" text="Move" visible="false" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font name="Avenir Next Condensed Medium" size="13.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIconView fx:id="moveValidateIcon" glyphName="PAINT_BRUSH" />
+                                 </graphic>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </Button>
+                              <Button fx:id="scaleValidateButton" layoutX="189.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#validateScaleForm" text="Scale" visible="false" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font name="Avenir Next Condensed Medium" size="13.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIconView fx:id="scaleValidateIcon" glyphName="EXPAND" />
+                                 </graphic>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <GridPane.margin>
+                                    <Insets left="20.0" />
+                                 </GridPane.margin>
+                              </Button>
+                           </children>
+                        </GridPane>
+                        <ChoiceBox fx:id="colorInput" disable="true" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="10.0" right="150.0" top="5.0" />
+                           </GridPane.margin>
+                        </ChoiceBox>
+                        <Label alignment="CENTER_RIGHT" layoutX="30.0" layoutY="157.0" text="Clone :" textAlignment="RIGHT" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Avenir Next Condensed Medium" size="13.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <CheckBox fx:id="cloneCheckBox" disable="true" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </GridPane.margin>
+                        </CheckBox>
+                        <Label fx:id="scaleTypeLabel" alignment="CENTER_RIGHT" layoutX="30.0" layoutY="40.0" text="Scale Type :" textAlignment="RIGHT" visible="false">
+                           <font>
+                              <Font name="Avenir Next Condensed Medium" size="13.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="scaleFactorLabel" alignment="CENTER_RIGHT" layoutX="363.0" layoutY="69.0" text="Scale Factor :" visible="false" GridPane.columnIndex="2">
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="Avenir Next Condensed Medium" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="factorInput" layoutX="462.0" layoutY="64.0" visible="false" GridPane.columnIndex="3">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="10.0" right="150.0" top="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <RadioButton fx:id="scaleIncreaseRadio" mnemonicParsing="false" selected="true" text="Increase" visible="false" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </GridPane.margin>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="scaleToggle" />
+                           </toggleGroup>
+                           <font>
+                              <Font name="Avenir Next Condensed Medium" size="13.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="scaleDecreaseRadio" mnemonicParsing="false" text="Decrease" toggleGroup="$scaleToggle" visible="false" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="100.0" right="10.0" top="5.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="Avenir Next Condensed Medium" size="13.0" />
+                           </font>
+                        </RadioButton>
+                     </children>
+                  </GridPane>
+                  <HBox />
+                  <Pane prefHeight="30.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="labelDetail" alignment="CENTER_RIGHT" textAlignment="RIGHT">
+                           <font>
+                              <Font name="Avenir Next Condensed Medium" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Pane>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

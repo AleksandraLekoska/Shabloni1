@@ -1,0 +1,36 @@
+
+.button:hover {
+	-fx-background-color: gray ;
+	-fx-text-fill: white
+}
+
+.glyph-icon{
+	-fx-fill: black;
+}
+
+.button:hover .glyph-icon{
+	-fx-fill: white;
+}
+
+.text-field.error {
+  -fx-text-box-border: red ;
+  -fx-focus-color: red ;
+  -fx-text-fill: red;
+}
+
+.label.error {
+  -fx-text-fill: red;
+}
+
+.label.success {
+  -fx-text-fill: green;
+}
+
+.label {
+  -fx-text-fill: black;
+}
+
+.choice-box.error {
+  -fx-background-fills:  red ;
+  -fx-focus-color: red ;
+}
